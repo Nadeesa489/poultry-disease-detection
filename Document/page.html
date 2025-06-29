@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PoultryDetect</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7ff;
+      color: #333;
+    }
+
+    header {
+      background-color: #4a3aff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header .logo {
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d1cfff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #e0e7ff, #f4f7ff);
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      color: #2a2a72;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #555;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .upload-form {
+      margin-top: 20px;
+    }
+
+    .upload-btn {
+      background-color: #6a5acd;
+      color: white;
+      padding: 14px 28px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .upload-btn:hover {
+      background-color: #5848c2;
+    }
+
+    .diseases {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .diseases h2 {
+      color: #4a3aff;
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+
+    .disease-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .disease-cards img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .disease-cards img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      background: #4a3aff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    label.upload-btn {
+      display: inline-block;
+    }
+
+    .result {
+      margin-top: 30px;
+    }
+
+    .result img {
+      max-width: 300px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PoultryDetect</div>
+    <nav>
+      <a href="#">HOME</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Poultry Health Hub,</h1>
+    <p>Your comprehensive resource for poultry disease management and prevention.</p>
+
+    <form class="upload-form" action="/" method="post" enctype="multipart/form-data">
+      <input type="file" id="fileInput" name="image" accept="image/*" onchange="form.submit()">
+      <label for="fileInput" class="upload-btn">Upload Image</label>
+    </form>
+
+    {% if predict %}
+      <div class="result">
+        <h3>Prediction: {{ predict }}</h3>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+      </div>
+    {% endif %}
+  </section>
+
+  <section class="diseases">
+    <h2>Common Poultry Diseases</h2>
+    <div class="disease-cards">
+      <img src="/static/uploads/img1.jpg" alt="Disease 1">
+      <img src="/static/uploads/img2.jpg" alt="Disease 2">
+      <img src="/static/uploads/img3.jpg" alt="Avian Influenza">
+      <img src="/static/uploads/img4.jpg" alt="Fowl Pox">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 PoultryDetect. All rights reserved.
+  </footer>
+
+</body>
+</html>
